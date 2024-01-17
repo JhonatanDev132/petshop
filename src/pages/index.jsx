@@ -1,7 +1,9 @@
 export default function Home() {
   return (
     <>
-      <h1>PetShop</h1>
+      <section>
+        <h2>Pet Notícias</h2>
+      </section>
     </>
   )
 }
