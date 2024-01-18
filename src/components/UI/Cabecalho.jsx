@@ -58,6 +58,7 @@ const StyledHeader = styled.header`
     @media screen and (min-width: 700px) {
         div {
             flex-direction: row;
+            justify-content: start;
         }
         
         h1 a {
