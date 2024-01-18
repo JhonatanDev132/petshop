@@ -9,7 +9,7 @@ export default function Menu(){
     const pathname = usePathname();
 
 
-    
+
 
     return (
         <>
@@ -33,7 +33,7 @@ const StyledNav = styled.nav`
         padding: 10px;
         /* margin: 5px; */
         color: white;
-        background-color: var(--cor-primaria-fundo);
+        background-color: black;
     }
 
     .borda-esquerda{
@@ -46,13 +46,14 @@ const StyledNav = styled.nav`
 
      a:hover,
      a:focus {
-        color: var(--cor-secundaria-hover);
+        color: gray;
     }
 
     .active {
-        background-color: pink;
-        color: white;
+        background-color: white;
+        color: black;
         font-weight: bold;
+        border: 1px solid black;
     }
     @media screen and (min-width: 700px) {
         a {
@@ -63,4 +64,4 @@ const StyledNav = styled.nav`
 
         margin-left: auto;
     }
-`;  
+`;
