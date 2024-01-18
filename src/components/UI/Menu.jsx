@@ -39,4 +39,10 @@ const StyledNav = styled.nav`
      a:focus {
         color: var(--cor-secundaria-hover);
     }
+
+    @media screen and (min-width: 700px) {
+        a {
+            font-size: 1.25rem;
+        }
+    }
 `;  
