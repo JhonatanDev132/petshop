@@ -1,4 +1,5 @@
 import Head from "next/head";
+import styled from "styled-components";
 
 export default function Sobre() {
   return (
@@ -8,9 +9,15 @@ export default function Sobre() {
         <meta name="description" content="Saiba Sobre Nós" />
         <meta name="keywords" content="petshop, sobre"/>
       </Head>
-      <section>
+      <StyledSection>
         <h2>Sobre nossos produtos</h2>
-      </section>
+      </StyledSection>
     </>
   )
 }
+
+const StyledSection = styled.section`
+  h2::before{
+    content: "💡";
+  }
+`
