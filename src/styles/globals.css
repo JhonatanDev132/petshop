@@ -16,8 +16,6 @@
   --cor-secundaria-hover: #e2e2eb;
   --sombra-box: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   --borda-arredondada: 0.5rem;
-  --borda-arredondada-esquerda: 10px 0 0 10px;
-  --borda-arredondada-direita: 0 10px 10px 0;
 }
 html {
   font-size: 16px;
@@ -27,13 +25,12 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
   background-color: #ededf7;
-  
+
   /* Propriedades recomendadas para
   minimizar a chance de serrilhamento de fontes
   em certos navegadores/dispositivos */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 h1,
 h2,

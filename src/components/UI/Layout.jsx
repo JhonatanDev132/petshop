@@ -1,8 +1,10 @@
-import Cabecalho from "./Cabecalho"
+import Cabecalho from "./Cabecalho";
 
-export default function Layout( {children} ){
-    return <>
-        <Cabecalho />
-        <main className="limitador">{children}</main>
+export default function Layout({ children }) {
+  return (
+    <>
+      <Cabecalho />
+      <main className="limitador">{children}</main>
     </>
+  );
 }

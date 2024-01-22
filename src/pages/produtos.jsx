@@ -1,3 +1,4 @@
+import Container from "@/components/ui/Container";
 import Head from "next/head";
 import styled from "styled-components";
 
@@ -5,19 +6,65 @@ export default function Produtos() {
   return (
     <>
       <Head>
-        <title>PetShop | Produtos</title>
-        <meta name="description" content="Conheça os nossos produtos" />
-        <meta name="keywords" content="petshop, produtos"/>
+        <title>Produtos - PetShop</title>
+        <meta
+          name="description"
+          content="Venda de ração, coleira, brinquedo e outros produtos para o seu pet"
+        />
+        <meta name="keywords" content="Ração, coleira, brinquedo, remédio" />
       </Head>
-      <StyledSection>
+      <StyledProdutos>
         <h2>Conheça nossos produtos</h2>
-      </StyledSection>
+
+        <Container>
+          <article>
+            <h3>Banho</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis
+              quibusdam, optio iusto accusamus dignissimos reprehenderit enim?
+              Dolores, porro sequi laborum nulla eveniet nesciunt ducimus cum
+              culpa delectus quos, laudantium beatae.
+            </p>
+          </article>
+          <article>
+            <h3>Tosa</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis
+              quibusdam, optio iusto accusamus dignissimos reprehenderit enim?
+              Dolores, porro sequi laborum nulla eveniet nesciunt ducimus cum
+              culpa delectus quos, laudantium beatae.
+            </p>
+          </article>
+          <article>
+            <h3>Castração</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis
+              quibusdam, optio iusto accusamus dignissimos reprehenderit enim?
+              Dolores, porro sequi laborum nulla eveniet nesciunt ducimus cum
+              culpa delectus quos, laudantium beatae.
+            </p>
+          </article>
+        </Container>
+      </StyledProdutos>
     </>
-  )
+  );
 }
 
-const StyledSection = styled.section`
-  h2::before{
+const StyledProdutos = styled.section`
+  h2::before {
     content: "🎁 ";
   }
-`
+
+  article {
+    padding: 1rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    /* Esta div é o StyledContainer, mas
+    com uma formatação que só vale para esta página Produtos */
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+`;
