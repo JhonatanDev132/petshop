@@ -1,6 +1,10 @@
-export default function ListaPosts(){
-    return  <StyledListaPosts>
-    {arrayPosts.map((post) => {
+import styled from "styled-components";
+import Link from "next/link";
+
+export default function ListaPosts( {posts} ){
+    return(  
+    <StyledListaPosts>
+    {posts.map((post) => {
       return (
         <article key={post.id}>
           <Link href="">
@@ -11,7 +15,7 @@ export default function ListaPosts(){
       );
     })}
   </StyledListaPosts>
-}
+)}
 
 const StyledListaPosts = styled.div`
   article {
