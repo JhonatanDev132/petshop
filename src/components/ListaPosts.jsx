@@ -2,7 +2,13 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export default function ListaPosts( {posts} ){
-    return(  
+  /* Se não houver posts (ou seja, posts está vazio/zerado),
+  em vez de retornar artigos com o map, retorne uma mensagem provisória
+  para o usuário. */
+    if(posts.length === 0)
+     return <h3 style={{ textAlign: "center" }}>Ainda não há posts!</h3>;
+
+    return (  
     <StyledListaPosts>
     {posts.map((post) => {
       return (
