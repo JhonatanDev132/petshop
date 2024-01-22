@@ -10,6 +10,13 @@ export default function Home() {
     const fetchPosts = async () => {
       try{
         const response = await fetch("http://10.20.46.31:5000/posts");
+
+        if(!response.ok){
+          throw new Error(
+            `Erro requiseção: ${response.status} - ${response.statusText}`
+          )
+        }
+
         const data = await response.json();
         setListaDePosts(data)
       } catch (error){
