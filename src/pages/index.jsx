@@ -1,32 +1,31 @@
 import Head from "next/head";
 import styled from "styled-components";
 import ListaPosts from "@/components/ListaPosts";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function Home() {
-  const [listaDePosts, setListaDePosts] = useState([]);
-  
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try{
-        const response = await fetch("http://10.20.46.31:5000/posts");
+/* EXECUTADA NO SERVIDOR/BACK-END */
+export async function getStaticProps() {
+  console.log("Código de servidor...");
+  try {
+    const resposta = await fetch(`http://10.20.46.20:2112/posts`);
+    const dados = await resposta.json();
 
-        if(!response.ok){
-          throw new Error(
-            `Erro requiseção: ${response.status} - ${response.statusText}`
-          )
-        }
+    if (!resposta.ok) {
+      throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
+    }
 
-        const data = await response.json();
-        setListaDePosts(data)
-      } catch (error){
-        console.error("Erro ao carregar posts!", error);
-      }
+    return {
+      props: {
+        posts: dados,
+      },
     };
-    
-    fetchPosts();
-  }, []);
+  } catch (error) {
+    console.error("Deu ruim: " + error.message);
+  }
+}
 
+export default function Home({ posts }) {
+  const [listaDePosts, setListaDePosts] = useState(posts);
 
   return (
     <>
@@ -40,16 +39,11 @@ export default function Home() {
       </Head>
       <StyledHome>
         <h2>Pet Notícias</h2>
-
-       <ListaPosts posts={listaDePosts}/>
-       
-
+        <ListaPosts posts={listaDePosts} />
       </StyledHome>
     </>
   );
 }
-
-
 
 const StyledHome = styled.section`
   h2::before {
