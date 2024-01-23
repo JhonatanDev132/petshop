@@ -1,5 +1,18 @@
 # PetShop: projeto Next.js
 
+### Documentação oficial do next sobre o Data Fetching
+
+https://nextjs.org/docs/pages/building-your-application/data-fetching
+
+### Resumo sobre as funções
+
+`getStaticProps`: executada no lado do servidor (SSR - Server Side Rendering),
+portanto logs, erros, lógicas, ações/comandos não aparecem para o usuário (mas aparecem no terminal para o programador(a)).
+
+Na maioria dos casos usaremos `getStaticProps` para esse tipo de processamento em que os dados são consumidos (Data Fetching) através de uma API, já que esta função tem uma performance melhor por fazer o processamento apenas no momento da requisição.
+
+Tambem há a função `getServerSideProps` que pode ser útil para páginas cujos dados mudam frequentemente ou são diferentes para cada usuario (como no caso de uso de dados de geolocalização).
+
 ## Branch 11-usando-json-server-como-fake-api
 
 ### Etapas(faça tudo usando o prompt do node)
