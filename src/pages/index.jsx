@@ -36,6 +36,16 @@ export async function getStaticProps() {
 export default function Home({ posts, categorias }) {
   const [listaDePosts, setListaDePosts] = useState(posts);
 
+  const aplicarFiltro = (event) => {
+  const categoriaEscolhida = event.currentTarget.textContent;
+
+  const postsFiltrados = posts.filter((post) => {
+    return post.categoria === categoriaEscolhida || categoriaEscolhida === null;
+  });
+
+  setListaDePosts(postsFiltrados);
+};
+
   return (
     <>
       <Head>
@@ -51,7 +61,7 @@ export default function Home({ posts, categorias }) {
 
         <div>
           {categorias.map((categoria, indice) => {
-            return <button key={indice}>{categoria} - {indice}</button>
+            return <button onClick={aplicarFiltro} key={indice}>{categoria}</button>
           })}
         </div>
 
@@ -67,6 +77,7 @@ const StyledHome = styled.section`
   }
 
   button {
+    text-transform: capitalize;
     background-color: var(--cor-primaria-fundo);
     color: white;
     border: none;
