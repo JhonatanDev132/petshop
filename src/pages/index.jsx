@@ -4,9 +4,7 @@ import ListaPosts from "@/components/ListaPosts";
 import { useState } from "react";
 import serverApi from "./api/server";
 
-/* EXECUTADA NO SERVIDOR/BACK-END */
 export async function getStaticProps() {
-  console.log("Código de servidor...");
   try {
     const resposta = await fetch(`${serverApi}/posts`);
     const dados = await resposta.json();
@@ -15,25 +13,27 @@ export async function getStaticProps() {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
-    /* Extraindo categorias dos posts para um novo array */
+    /* Extraindo as categorias dos posts para um novo array */
     const categorias = dados.map((post) => post.categoria);
-    console.log(categorias);
+
+    /* Gerando um array de categorias ÚNICAS */
+    const categoriasUnicas = [...new Set(categorias)];
 
     return {
       props: {
         posts: dados,
-        categorias: [], // Provisório []
+        categorias: categoriasUnicas,
       },
     };
   } catch (error) {
     console.error("Deu ruim: " + error.message);
     return {
       notFound: true,
-    }
+    };
   }
 }
 
-export default function Home({ posts }) {
+export default function Home({ posts, categorias }) {
   const [listaDePosts, setListaDePosts] = useState(posts);
 
   return (
@@ -48,6 +48,13 @@ export default function Home({ posts }) {
       </Head>
       <StyledHome>
         <h2>Pet Notícias</h2>
+
+        <div>
+          {categorias.map((categoria, indice) => {
+            return <button key={indice}>{categoria} - {indice}</button>
+          })}
+        </div>
+
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
     </>
