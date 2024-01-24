@@ -65,4 +65,14 @@ const StyledHome = styled.section`
   h2::before {
     content: "📰 ";
   }
+
+  button {
+    background-color: var(--cor-primaria-fundo);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 23px;
+    font-size: 14px;
+  }
 `;

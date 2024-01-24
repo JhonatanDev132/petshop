@@ -62,6 +62,13 @@
       "subtitulo": "Uma gata que odeia carinho e interação",
       "descricao": "Bla bla bla e coisa e tal e sei la o que e não sei mais o que escrever....",
       "categoria": "comportamento"
+    },
+    {
+      "id": 10,
+      "titulo": "Phellypheh precisa prestar atenção",
+      "subtitulo": "Senão vai ser reprovado...",
+      "descricao": "Tá jogando muito",
+      "categoria": "reprovados"
     }
   ]
 }
