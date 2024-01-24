@@ -34,6 +34,7 @@ export async function getStaticProps() {
 
 export default function Home({ posts, categorias }) {
   const [listaDePosts, setListaDePosts] = useState(posts);
+  const [filtroAtivo, setFiltroAtivo] = useState(false)
 
   const aplicarFiltro = (event) => {
   const categoriaEscolhida = event.currentTarget.textContent;
@@ -44,6 +45,7 @@ export default function Home({ posts, categorias }) {
 
   setListaDePosts(postsFiltrados);
 };
+
 
   return (
     <>
