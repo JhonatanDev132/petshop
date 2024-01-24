@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import Container from "@/components/UI/Container";
+import Container from "@/components/ui/Container";
 import Image from "next/image";
 
 export default function Pagina404(){

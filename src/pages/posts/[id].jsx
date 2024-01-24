@@ -1,4 +1,4 @@
-import Container from "@/components/UI/Container";
+import Container from "@/components/ui/Container";
 import Head from "next/head";
 import styled from "styled-components";
 import serverApi from "../api/server";
@@ -56,7 +56,7 @@ export default function Post({ post }){
     return (
     <>
     <Head>
-        <title>{tituloPagina} - PetShop</title>
+        <title>{tituloPagina}</title>
         <meta name="description" content={post.descricao}/>    
     </Head>
 

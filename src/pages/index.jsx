@@ -15,13 +15,14 @@ export async function getStaticProps() {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
-    /* Após o processamento (desde que não haja erros), a getStaticProps
-    retorna um objeto com uma propriedade chamada "props", e nesta propriedade
-    colocamos um objeto com as props que queremos usar. No caso, usamos
-    uma prop "posts" (pode ter qualquer nome) e é nela que colocamos os dados. */
+    /* Extraindo categorias dos posts para um novo array */
+    const categorias = dados.map((post) => post.categoria);
+    console.log(categorias);
+
     return {
       props: {
         posts: dados,
+        categorias: [], // Provisório []
       },
     };
   } catch (error) {
