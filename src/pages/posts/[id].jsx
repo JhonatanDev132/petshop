@@ -29,25 +29,26 @@ export async function getStaticProps({ params }) {
                 post: dados,
             },
           };
-          
+
     } catch (error) {
         console.error("Deu ruim: " + error.message);
     }
 }
 
-export default function Post(){
+export default function Post({ post }){
+    const tituloPagina = `${post.titulo} - PetShop`;
     return (
     <>
     <Head>
-        <title>Título do post... - PetShop</title>
-        <meta name="description" content="Descrição do post..."/>    
+        <title>{tituloPagina} - PetShop</title>
+        <meta name="description" content={post.descricao}/>    
     </Head>
 
     <StyledPost>
-        <h2>Título do post...</h2>
+        <h2>{post.titulo}</h2>
         <Container>
-            <h3>Categoria do post...</h3>
-            <p>Descrição do post...</p>
+            <h3>{post.categoria}</h3>
+            <p>{post.descricao}</p>
         </Container>
     </StyledPost>
     </>
