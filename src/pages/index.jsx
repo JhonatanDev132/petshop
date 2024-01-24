@@ -13,10 +13,9 @@ export async function getStaticProps() {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
-    /* Extraindo as categorias dos posts para um novo array */
+  
     const categorias = dados.map((post) => post.categoria);
 
-    /* Gerando um array de categorias ÚNICAS */
     const categoriasUnicas = [...new Set(categorias)];
 
     return {
@@ -59,11 +58,15 @@ export default function Home({ posts, categorias }) {
       <StyledHome>
         <h2>Pet Notícias</h2>
 
-        <div>
+        <StyledCategorias>
+        
           {categorias.map((categoria, indice) => {
             return <button onClick={aplicarFiltro} key={indice}>{categoria}</button>
           })}
-        </div>
+
+        
+        <button className="limpar">Limpar Filtro</button>
+        </StyledCategorias>
 
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
@@ -76,7 +79,11 @@ const StyledHome = styled.section`
     content: "📰 ";
   }
 
-  button {
+`;
+
+const StyledCategorias = styled.div`
+
+button {
     text-transform: capitalize;
     background-color: var(--cor-primaria-fundo);
     color: white;
@@ -86,4 +93,14 @@ const StyledHome = styled.section`
     margin: 23px;
     font-size: 14px;
   }
+
+.limpar {
+  background-color: gray;
+  &:hover {
+    background-color: lightgray;
+  }
+  &::before {
+    content: " 🧹";
+  }
+}
 `;
