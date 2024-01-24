@@ -4,14 +4,13 @@ import styled from "styled-components";
 import serverApi from "../api/server";
 
 
-export async function getStaticPaths() {
-    return {
-      paths: [],
-      fallback: "blocking",
-    }
-  }
 
 export async function getStaticProps({ params }) {
+    /* Utilizamos a prop params do getStaticProps
+    para poder ter acesso aos parâmetros dinâmicos da rota
+    configurada nos links da Lista de Posts. Usamos a 
+    desestruturação para obeter de forma direta o parâmetro
+    chamado "id".  */
     const { id } = params;
     console.log(id);
 
@@ -37,6 +36,20 @@ export async function getStaticProps({ params }) {
           }
     }
 }
+
+
+export async function getStaticPaths() {
+    return {
+        /* paths fica vazio pois todos os caminhos dever ser
+        gerados sob demanda, ou seja, no momento em que a
+        página for aberta. */
+      paths: [],
+
+      /* fallback fica como "blocking" para garantir que a página
+      somente será renderezida após a conclusão da geração dos caminhos e dos dados estáticos */
+      fallback: "blocking",
+    }
+  }
 
 export default function Post({ post }){
     const tituloPagina = `${post.titulo} - PetShop`;
