@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ListaPosts from "@/components/ListaPosts";
 import { useState } from "react";
 import serverApi from "./api/server";
+import ListaCategorias from "@/components/ListaCategorias";
 
 export async function getStaticProps() {
   try {
@@ -75,16 +76,13 @@ export default function Home({ posts, categorias }) {
       <StyledHome>
         <h2>Pet Notícias</h2>
 
-        <StyledCategorias>
+      <ListaCategorias 
+      categoriaAtiva={categoriaAtiva}
+      aplicarFiltro={aplicarFiltro}
+      filtroAtivo={filtroAtivo}
+      limparFiltro={limparFiltro}
+      categorias={categorias} />
         
-          {categorias.map((categoria, indice) => {
-            return <button className={categoria === categoriaAtiva ? "ativo" : ""} onClick={aplicarFiltro} key={indice}>{categoria}</button>
-          })}
-
-        
-        { filtroAtivo && 
-          <button onClick={limparFiltro} className="limpar">Limpar Filtro</button>}
-        </StyledCategorias>
 
         <ListaPosts posts={listaDePosts} />
       </StyledHome>
@@ -99,31 +97,3 @@ const StyledHome = styled.section`
 
 `;
 
-const StyledCategorias = styled.div`
-
-button {
-    text-transform: capitalize;
-    background-color: var(--cor-secundaria-fundo);
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 23px;
-    font-size: 14px;
-
-
-    &.ativo {
-      background-color: var(--cor-primaria-fundo);
-    }
-  }
-
-.limpar {
-  background-color: gray;
-  &:hover {
-    background-color: lightgray;
-  }
-  &::before {
-    content: " 🧹";
-  }
-}
-`;
