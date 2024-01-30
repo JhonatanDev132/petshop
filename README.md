@@ -29,6 +29,16 @@ no padrão REST:
 - PATCH: atualizar parcialmente
 - DELETE: excluir 
 
+### Ajustes necessários para a aplicação usar a API Firebase JSON
+
+- Em `index.jsx`:
+  - Alterar a getStaticProps ajustando o endpoint para
+  `posts.json` e gerando um novo array com os posts/objetos
+  carregados a partir da `const dados`
+
+- Em `[id].jsx`:
+  - Alterar a `getStaticProps` ajustando o endpoint para `/posts/${id}.json`
+
 ## Branch 14-usando-rotas-dinâmicas-para-abrir-post(esqueci de criar a branch)
 
 ### Recursos necessários
