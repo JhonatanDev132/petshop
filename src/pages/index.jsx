@@ -10,12 +10,23 @@ export async function getStaticProps() {
     const resposta = await fetch(`${serverApi}/posts.json`);
     const dados = await resposta.json();
     console.log(dados);
+    
 
     if (!resposta.ok) {
       throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
   
+    /* Colocando os dados dos objetos dentro de um array */
+    const arrayDePosts = Object.keys(dados).map((post) => {
+      return {
+        ...dados[post],
+        id: post,
+      };
+    });
+
+    console.log(arrayDePosts);
+
     const categorias = dados.map((post) => post.categoria);
 
     const categoriasUnicas = [...new Set(categorias)];
