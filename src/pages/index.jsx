@@ -39,7 +39,7 @@ export async function getStaticProps() {
       };
     });
 
-    console.log(arrayDePosts);
+    // console.log(arrayDePosts);
 
     const categorias = dados.map((post) => post.categoria);
 
