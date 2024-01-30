@@ -9,7 +9,7 @@ export async function getStaticProps() {
   try {
     const resposta = await fetch(`${serverApi}/posts.json`);
     const dados = await resposta.json();
-    console.log(dados);
+
     
 
     if (!resposta.ok) {
@@ -41,13 +41,13 @@ export async function getStaticProps() {
 
     // console.log(arrayDePosts);
 
-    const categorias = dados.map((post) => post.categoria);
+    const categorias = arrayDePosts.map((post) => post.categoria);
 
     const categoriasUnicas = [...new Set(categorias)];
 
     return {
       props: {
-        posts: dados,
+        posts: arrayDePosts,
         categorias: categoriasUnicas,
       },
     };
