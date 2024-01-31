@@ -48,16 +48,30 @@ export default function Contato() {
           }) }>
             <div>
               <label htmlFor="nome">Nome: </label>
-              <input {...register("nome")} type="text" name="nome" id="nome" />
+              <input {...register("nome", {required: true})} type="text" name="nome" id="nome" />
             </div>
+
+
+            { /* ? é conhecido "Optional Chaining [encadeamento opcional]" 
+            É usado para evitar erros caso uma propriedades de um objeto seja null ou undefined.
+            Caso não seja null/undefined, aí sim verificamos se o type é 
+            required para seguir com a validação. */}
+            {
+              errors.nome?.type == "required" && <p className="vermelho">Você deve digitar o nome</p>
+            }
+
             <div>
               <label htmlFor="email">E-mail: </label>
-              <input {...register("email")} type="email" name="email" id="email" />
+              <input {...register("email", {required: true})} type="email" name="email" id="email" />
             </div>
+
+            {
+              errors.email?.type == "required" && <p className="vermelho">Você deve digitar o email</p>
+            }
             <div>
               <label htmlFor="mensagem">Mensagem:</label>
               <textarea
-                {...register("mensagem")}
+                {...register("mensagem", {required: true, minLength: 20})}
                 maxLength={500}
                 name="mensagem"
                 id="mensagem"
@@ -65,6 +79,14 @@ export default function Contato() {
                 rows="8"
               ></textarea>
             </div>
+
+            {
+              errors.mensagem?.type == "required" && (<p className="vermelho">Você deve digitar a mensagem</p>)
+            }
+            {
+              errors.mensagem?.type == "minLength" && (<p>Escreva pelo menos 20 caracteres</p>)
+            }
+
             <div>
               <button type="submit">Enviar mensagem</button>
             </div>
@@ -80,6 +102,10 @@ const StyledContato = styled.section`
     content: "💌 ";
   }
 
+  .vermelho {
+    color: red ;
+  }
+
   form > div {
     margin-bottom: 0.5rem;
     display: flex;
@@ -90,6 +116,15 @@ const StyledContato = styled.section`
       width: 30%;
       display: flex;
       align-items: center;
+    }
+
+    /* Seletor + significa "elemento adjacente",
+    ou seja, pegar os parágrafos que estão depois
+    da div. */
+    & + p {
+      color: red;
+      font-size: 0.8rem;
+      font-style: italic;
     }
 
     & input,
