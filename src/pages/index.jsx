@@ -92,7 +92,7 @@ export default function Home({ posts, categorias }) {
   return (
     <>
       <Head>
-        <title>PetShop</title>
+        <title>PetShopp</title>
         <meta
           name="description"
           content="Web App PetShop criado com Next.js como exemplo do curso Téc. Informática para Internet"
