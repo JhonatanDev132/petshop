@@ -6,7 +6,9 @@ import serverApi from "./api/server";
 import { useRouter } from "next/router";
 
 export default function Contato() {
-  const { register, handleSubmit, } = useForm();
+  const { register,
+          handleSubmit,
+          formState: { errors }, } = useForm();
   let router = useRouter();
 
   const enviarContato = async (dados) => {
