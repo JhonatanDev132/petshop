@@ -10,7 +10,7 @@ export default function Document() {
           type="image/png"
           sizes="256x256"
         />
-        <link rel="manifest" href="/public/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="application-name" content="PetShop" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
