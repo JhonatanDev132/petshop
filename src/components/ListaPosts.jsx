@@ -10,7 +10,7 @@ export default function ListaPosts( {posts} ){
     if(posts.length === 0)
      return <h3 style={{ textAlign: "center" }}>Ainda não há posts!</h3>;
 
-    return (  
+    return (
     <StyledListaPosts>
     {posts.map((post) => {
       return (
